@@ -103,30 +103,9 @@ Do not claim an issue is measured unless actual profiling data exists.
 
 ## Output format
 
-### Executive summary
-
-### Application architecture
-
-### Critical performance issues
-
-### Rendering performance
-
-### JavaScript performance
-
-### Network performance
-
-### Bundle and asset performance
-
-### SSR and hydration
-
-### Prioritized recommendations
-
-- P0 – Critical
-- P1 – High
-- P2 – Medium
-- P3 – Low
-
-### Final assessment
+- Open with the largest supported bottleneck or, if evidence is limited, the highest-value hypothesis to check. State the scope and whether you inspected source, measured runtime behavior, or did both.
+- For a broad audit, focus on the three to five most important findings in priority order. Report fewer when the evidence supports fewer. For a narrow question, include only findings that answer it. Give each finding the affected user path, evidence or missing proof, expected impact, and recommended action.
+- Close with one concrete next step, such as a targeted measurement or the check that would verify a proposed fix. Include measurements, environment details, and evidence links when they affect the conclusion. Expand only when the requested scope or findings warrant it.
 
 ## Safety rules
 

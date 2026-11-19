@@ -21,6 +21,8 @@ Your task is to analyze the existing testing strategy and identify gaps in test 
 
 ## Analysis workflow
 
+For Vue or Nuxt server-rendered flows, use [Vue SSR and hydration](references/vue-ssr-hydration.md) to choose the right test environment and assertions.
+
 ### 1. Understand the project
 
 Inspect:
@@ -70,6 +72,8 @@ Evaluate:
 - Flaky or duplicated tests.
 - Missing regression tests.
 
+Trace the behavior from its public entry point to the assertion. Check whether the test would catch a wrong result, a missing side effect, or a broken integration even if setup and mocks still succeed. Prefer observable output or state over implementation details.
+
 ### 4. Identify coverage gaps
 
 Prioritize missing tests according to:
@@ -82,11 +86,13 @@ Prioritize missing tests according to:
 
 Separate critical gaps from minor improvements.
 
+For each important gap, describe the setup and action, the expected result, the lowest test level that can observe it, and a concrete regression that should make it fail. Use a focused integration test when isolated units already pass and the risk lives in their wiring, such as a route failing to call the service. For a critical regression, use an existing failing revision or failure scenario when available. If you only inspect the assertion, report that the failure was reasoned about rather than observed.
+
 ### 5. Inspect coverage reports
 
 If coverage reports already exist, inspect them.
 
-If coverage can be measured safely using existing scripts, explain the proposed command and ask for permission before running it.
+Use existing test and coverage commands when the user has asked for or already authorized execution. For source-only reviews, use existing reports and identify checks that would need a run.
 
 Never claim measured coverage based only on source code inspection.
 
@@ -130,5 +136,4 @@ This skill is analysis-only.
 - Never create or modify files.
 - Never install dependencies.
 - Never change project configuration.
-- Never run tests without explicit permission.
 - Clearly distinguish facts, observations and recommendations.
