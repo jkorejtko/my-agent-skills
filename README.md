@@ -58,3 +58,8 @@ recorded revision and links any newly added skills.
 To move TStack to a newer upstream revision when maintaining this repository:
 
     git submodule update --remote sources/tstack
+
+## Feedback and contact
+
+- [Report a bug or suggest a skill](https://github.com/jkorejtko/my-agent-skills/issues)
+- [Connect with me on LinkedIn](https://www.linkedin.com/in/ji%C5%99%C3%AD-korejtko-a21916107/)
