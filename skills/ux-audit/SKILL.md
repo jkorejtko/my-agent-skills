@@ -24,6 +24,8 @@ Evaluate whether people can complete their tasks, understand what happened, and 
 
 ## Report findings
 
+When visible movement or stutter affects a journey, use `real-browser-audit` and its interaction stability protocol for measurement when available. Describe the usability consequence in the UX report, such as a button moving away from the pointer.
+
 For each material finding, state the scenario, observed behavior, user consequence, and proposed change. Cite the route, code location, test, or captured evidence. Include a short retest whenever the result depends on an interaction.
 
 Prioritize blocked tasks and data loss first, followed by recurring friction and visual polish. Put source-based hypotheses in a separate group and name the check needed to confirm them. End with the journeys, device/input combinations, and failure states you covered and any gaps that could change the conclusions.

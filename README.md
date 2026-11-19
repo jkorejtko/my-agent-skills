@@ -11,7 +11,7 @@ across repositories.
 | [vue-architecture-review](skills/vue-architecture-review/SKILL.md) | Review Vue or Nuxt component boundaries, composables, and state management. |
 | [test-coverage-analysis](skills/test-coverage-analysis/SKILL.md) | Assess test quality and find important scenarios without coverage. |
 | [performance-audit](skills/performance-audit/SKILL.md) | Identify and prioritize likely bottlenecks across frontend, SSR, caching, and backend for frontend. |
-| [real-browser-audit](skills/real-browser-audit/SKILL.md) | Measure specific pages and interactions across browsers under normal, Slow 4G, or CPU-throttled conditions. |
+| [real-browser-audit](skills/real-browser-audit/SKILL.md) | Measure Lighthouse load metrics, interaction latency, and layout stability during actions such as hover and filtering. |
 | [ux-audit](skills/ux-audit/SKILL.md) | Review user journeys, responsive layouts, keyboard and touch controls, and UI copy. |
 | [security-audit](skills/security-audit/SKILL.md) | Review application code, API authorization, dependencies, and deployment configuration. |
 | [legacy-refactor](skills/legacy-refactor/SKILL.md) | Refactor incrementally while preserving observable behavior. |

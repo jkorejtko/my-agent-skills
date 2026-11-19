@@ -1,15 +1,22 @@
 ---
 name: real-browser-audit
-description: Measure page loads and user interactions in actual browser engines under normal, slow-network, and CPU-throttled conditions. Use for reproducible browser performance benchmarks, cross-browser comparisons, and trace-based diagnosis.
+description: Measure page loading, interaction latency, and visual stability in real browsers. Use for Lighthouse or Core Web Vitals audits, browser traces, elements that jump during use, and comparisons under network or CPU throttling.
 ---
 
 # Real Browser Audit
 
 Measure how long a user waits for a page or interaction and identify what dominates the wait. For a broad source-level review of frontend, SSR, cache, and BFF, use `performance-audit` when available. For a combined audit, share one summary and put the run matrix and evidence below it.
 
+## Choose the audit mode
+
+- **Lighthouse baseline.** Use Lighthouse navigation mode when load performance is the question. Report LCP, CLS, and TBT, with FCP or Speed Index when they help explain the result. Record the Lighthouse version, device preset, throttling method, and cache state. Compare raw metrics under the same settings. If Lighthouse is unavailable, label any browser-native measurements by their actual source.
+- **Interaction stability.** For hover, scroll, filtering, or controls that move after loading, use [Interaction stability](references/interaction-stability.md). Record the action, the elements or scroll position that should stay stable, the expected content change, and the observed displacement or delay.
+
+Use the focused mode requested. When both are in scope, report initial navigation metrics and post-load observations separately.
+
 ## Establish the test
 
-1. Identify the build or revision, the route, and one representative user action with an observable completion condition. For example, measure opening a gallery from click until the selected image is visible. Add routes or actions when the request calls for them.
+1. Identify the build or revision and the route. For an interaction audit, pick one representative action and an observable completion condition, such as the selected image becoming visible after opening a gallery. Add routes or actions when the request calls for them.
 2. Use the browser tools and test setup available in the current host. Record the exact browser product or engine, version, OS, machine or device, viewport, headless or headed mode, and build type. A mobile viewport models layout. Measurements from a physical phone should identify the device.
 3. Define cache, authentication, and test data state before collecting samples. Keep cold loads, warm revisits, first interactions, and repeated interactions distinct. Use test data when the action writes anything.
 4. Follow [Measurement protocol](references/measurement-protocol.md) for repetitions, instrumentation, and evidence capture.
@@ -31,5 +38,5 @@ Use installed Chrome, Firefox, or Safari when the result must describe that prod
 
 - Lead with the most consequential observed slowdown and its likely cause. Cite the trace evidence and identify any competing explanation the run could not resolve.
 - Report the scenario, browser/version, profile, cache state, sample count, typical timing and spread, and trace or report location. Compare common metrics only under comparable conditions. Keep browser-specific diagnostics with their own runs.
-- Use navigation metrics such as LCP, CLS, and TTFB where supported and relevant. Report interaction latency against the agreed completion condition. Use the label field INP only for field data.
+- Use navigation metrics such as LCP, CLS, and TTFB where relevant. For an interaction, distinguish delay to the next paint from time until the expected result is visible. Use the label field INP only for field data.
 - Include unsuccessful runs and gaps that affect the conclusion. End with the highest-value fix or diagnostic and the exact scenario to rerun.
