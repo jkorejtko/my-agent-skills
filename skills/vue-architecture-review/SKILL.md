@@ -24,6 +24,8 @@ You are a senior Vue.js architect.
 5. Identify unnecessary dependencies and coupling.
 6. Identify potential performance issues.
 
+When a finding concerns server data, use [API contracts and query cache](references/api-contracts-and-query-cache.md). Trace a representative read or write through the Vue app and any BFF or API in scope.
+
 ## Rules
 
 - Do not modify files during the analysis.

@@ -21,7 +21,7 @@ Your task is to analyze the existing testing strategy and identify gaps in test 
 
 ## Analysis workflow
 
-For Vue or Nuxt server-rendered flows, use [Vue SSR and hydration](references/vue-ssr-hydration.md) to choose the right test environment and assertions.
+For Vue or Nuxt server-rendered flows, use [Vue SSR and hydration](references/vue-ssr-hydration.md) to choose the right test environment and assertions. For flows that depend on an API or BFF, use [API test boundaries](references/api-test-boundaries.md) to check what the mocks leave uncovered.
 
 ### 1. Understand the project
 
