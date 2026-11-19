@@ -7,22 +7,15 @@ description: Coordinate multi-agent software project workflows using T3 Code orc
 
 ## Purpose
 
-Coordinate complex software engineering workflows using specialized skills and delegated child agents.
-
-Act as the central coordinator. Delegate independent work, collect results, prioritize findings and coordinate implementation and verification.
-
-Do not perform every task yourself when suitable specialized agents are available.
+Coordinate complex software engineering workflows using specialized skills. Delegate independent work when it benefits the task and the request or applicable instructions authorize delegation. Handle focused reviews directly.
 
 ## 1. Workspace identification
 
 Before starting:
 
-- Identify the currently opened workspace and project.
-- Never assume the project name, framework, language or technology stack.
-- Base all findings and actions exclusively on the current project.
-- If multiple projects or workspaces are available, ask which one to use.
-- Inspect the project structure and relevant configuration.
-- Check Git status before any implementation.
+- Identify the workspace and repositories in the request. Use the current project as the default and include each explicitly named repository in a cross-repository review.
+- Verify each repository's root, branch or working tree, and framework. Note which repository owns each finding and trace shared contracts across the affected repositories.
+- Check Git status in each repository before making changes.
 - Preserve all existing user changes.
 
 ## 2. Operating modes
@@ -60,7 +53,10 @@ Use the following skills when relevant:
 - `vue-architecture-review`: Vue and Nuxt architecture.
 - `test-coverage-analysis`: Test infrastructure, quality and missing scenarios.
 - `performance-audit`: Frontend and full-stack performance.
+- `real-browser-audit`: Repeatable browser measurements and traces for specific pages and interactions, including throttled profiles.
 - `legacy-refactor`: Safe incremental refactoring.
+- `security-audit`: Evidence-driven frontend and full-stack security review, including API authorization, dependencies and deployment configuration.
+- `ux-audit`: Review user journeys, responsive layouts, interaction states, keyboard access and UI copy.
 - Other project-specific skills when available.
 
 Do not force irrelevant skills into a workflow.
@@ -73,26 +69,18 @@ If a child agent cannot access the assigned skill, report this limitation. Do no
 
 When T3 Code orchestration tools are available:
 
-- Use `orchestrator_capabilities` to inspect available providers and delegation capabilities when needed.
-- Use `delegate_task` to create independent child tasks.
-- Launch independent tasks concurrently rather than sequentially.
-- Use `task_status` to monitor delegated work.
-- Use `task_cancel` when cancellation is necessary.
-- Record every task ID and its purpose.
-- Wait for all required tasks before final consolidation.
+- Use native delegation for same-provider work with inherited settings when the host directs it. Before the first `delegate_task`, call `orchestrator_capabilities` and use the settings and provider the request specifies. Use `delegate_task` for cross-provider work, custom settings, separate checkouts, or when requested by name.
+- Follow the running delegate's returned `next` action. Avoid polling with `task_status`, timers, or watchers. Cancel obsolete delegates with `task_cancel`.
+- Run independent tasks concurrently when useful, record their IDs and purpose, and wait for the required results before consolidating.
 
-Choose providers based on availability and task suitability.
-
-Do not assume every provider supports child tasks.
-
-If orchestration tools are unavailable, explain the limitation and offer a sequential workflow.
+If a requested provider or delegation method is unavailable, report the limitation and keep working on independent steps within scope. For audits without a required delegation method, proceed directly when delegation is unavailable.
 
 ## 5. Task design
 
 Every delegated task must contain:
 
 - A specific objective.
-- The exact project and workspace context.
+- The repository roots and branches or working trees in scope, including both sides of any shared interface the task reviews.
 - Relevant skill name.
 - Scope and boundaries.
 - Expected output format.
@@ -110,12 +98,16 @@ For a comprehensive project audit, consider these independent tasks:
 1. Architecture review.
 2. Test coverage analysis.
 3. Performance audit.
-4. Security review, if a relevant skill is available.
+4. Security review using `security-audit`, when relevant to the requested audit scope.
+5. UX review using `ux-audit`, when the scope includes user-facing workflows.
+
+When the scope calls for browser measurements, use `real-browser-audit` for the relevant performance scenarios. If both performance skills are in scope, keep one set of priorities and attach browser measurements as evidence.
+
+For security review, pass the child's source-review scope and any existing execution authorization explicitly. Live endpoint testing requires its own bounded authorization; do not infer it from a general project audit. Keep confirmed findings separate from inconclusive candidates and preserve coverage gaps in consolidation.
 
 After delegation:
 
 - Collect all task IDs.
-- Monitor progress.
 - Retrieve completed results.
 - Report failures explicitly.
 - Never silently ignore incomplete tasks.

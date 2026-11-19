@@ -18,10 +18,9 @@ Your task is to identify performance bottlenecks and provide actionable recommen
 - Do not invent performance measurements.
 - Distinguish measured problems from potential bottlenecks.
 - Prioritize user impact over theoretical optimizations.
-- Always identify the current workspace and project before starting.
-- Never assume the project name, framework or technology stack.
-- Base all findings exclusively on the currently opened project.
-- If multiple projects or workspaces are available, ask which one to analyze.
+- Identify the repositories in scope, their working trees, and the execution environment.
+
+Use [SSR and BFF](references/ssr-bff.md) when server rendering, caching, or upstream calls are on the request path. For detailed browser traces, repeated measurements, or comparisons across browsers and throttle profiles, use `real-browser-audit` when available. Keep the broad audit focused on the highest-impact findings and the measurements needed to validate them.
 
 ## Analysis workflow
 
@@ -136,5 +135,4 @@ This skill is analysis-only.
 - Never modify files.
 - Never install dependencies.
 - Never change configuration.
-- Never run benchmarks or builds without explicit permission.
-- Ask before running profiling tools.
+- Use existing tools for the runtime measurements the user requested. For source-only audits, use existing evidence and identify which hypotheses still need runtime checks.
