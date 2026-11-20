@@ -57,6 +57,7 @@ Use the following skills when relevant:
 - `legacy-refactor`: Safe incremental refactoring.
 - `security-audit`: Evidence-driven frontend and full-stack security review, including API authorization, dependencies and deployment configuration.
 - `ux-audit`: Review user journeys, responsive layouts, interaction states, keyboard access and UI copy.
+- `minimalistic-design-audit`: Review visual hierarchy and competing actions when the user asks to simplify a screen.
 - Other project-specific skills when available.
 
 Do not force irrelevant skills into a workflow.

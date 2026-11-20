@@ -13,6 +13,7 @@ across repositories.
 | [performance-audit](skills/performance-audit/SKILL.md) | Identify and prioritize likely bottlenecks across frontend, SSR, caching, and backend for frontend. |
 | [real-browser-audit](skills/real-browser-audit/SKILL.md) | Measure Lighthouse load metrics, interaction latency, and layout stability during actions such as hover and filtering. |
 | [ux-audit](skills/ux-audit/SKILL.md) | Review user journeys, responsive layouts, keyboard and touch controls, and UI copy. |
+| [minimalistic-design-audit](skills/minimalistic-design-audit/SKILL.md) | Use the squint test to identify competing actions and simplify screens while preserving the user journey. |
 | [security-audit](skills/security-audit/SKILL.md) | Review application code, API authorization, dependencies, and deployment configuration. |
 | [legacy-refactor](skills/legacy-refactor/SKILL.md) | Refactor incrementally while preserving observable behavior. |
 | [project-orchestrator](skills/project-orchestrator/SKILL.md) | Combine specialized skills for larger audits and coordinate work across repositories. |
